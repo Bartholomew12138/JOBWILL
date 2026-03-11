@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>应届生职业倾向测试</title>
+        <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=3.1">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎯 应届生职业倾向测试</h1>
+            <p class="subtitle">通过50道精选题目，帮你找到最适合的职业方向</p>
+        </header>
+
+        <div id="userInfo" class="section">
+            <div class="intro-card">
+                <h2>📋 基本信息收集（可选）</h2>
+                <p class="info-text">填写这些信息可以帮助我们提供更精准、个性化的职业建议。所有信息仅用于分析，不会存储或分享。</p>
+                
+                <form id="userInfoForm">
+                    <div class="form-group">
+                        <label for="gender">
+                            <span class="label-icon">👤</span>
+                            性别
+                        </label>
+                        <select id="gender" class="form-input">
+                            <option value="unknown">不透露（使用默认权重）</option>
+                            <option value="male">男</option>
+                            <option value="female">女</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="schoolType">
+                            <span class="label-icon">🏫</span>
+                            学校类型
+                        </label>
+                        <select id="schoolType" class="form-input">
+                            <option value="unknown">不透露（使用默认权重）</option>
+                            <option value="985">985高校</option>
+                            <option value="211">211高校（非985）</option>
+                            <option value="normal">普通本科/双非高校</option>
+                            <option value="junior">专科/高职院校</option>
+                            <option value="overseas">海外高校</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="degreeLevel">
+                            <span class="label-icon">📜</span>
+                            学历层次
+                        </label>
+                        <select id="degreeLevel" class="form-input">
+                            <option value="unknown">不透露（使用默认权重）</option>
+                            <option value="junior">专科</option>
+                            <option value="bachelor">本科</option>
+                            <option value="master">硕士</option>
+                            <option value="phd">博士</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="major">
+                            <span class="label-icon">📚</span>
+                            专业类别
+                        </label>
+                        <select id="major" class="form-input">
+                            <option value="unknown">不透露（使用默认权重）</option>
+                            <option value="stem">理工科（计算机/工程/数学/物理等）</option>
+                            <option value="business">经管类（金融/会计/经济/管理等）</option>
+                            <option value="arts">文史类（中文/历史/哲学/外语等）</option>
+                            <option value="social">社科类（法学/社会学/心理学/教育学等）</option>
+                            <option value="design">设计/艺术类</option>
+                        </select>
+                    </div>
+                    
+                    <div class="info-note">
+                        <p>💡 <strong>提示</strong>：填写这些信息不会限制你的选择，只是帮助我们提供更贴合实际的建议。所有分析都基于统计数据，不代表个体差异。</p>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn secondary" onclick="console.log('跳过按钮被点击'); skipUserInfo()">跳过，直接开始</button>
+                        <button type="button" class="btn primary" onclick="console.log('开始测试按钮被点击'); saveUserInfoAndStart()">开始测试</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div id="intro" class="section hidden">
+            <div class="intro-card">
+                <h2>测试说明</h2>
+                <ul class="intro-list">
+                    <li>✅ 共50道精选选择题，预计8-12分钟完成</li>
+                    <li>✅ 基于真实工作场景设计，贴合实际</li>
+                    <li>✅ 包含极端偏好测试和一致性检验</li>
+                    <li>✅ 结果包含创业、私企、外企、国央企、公务员五大方向及细分建议</li>
+                </ul>
+                <button class="btn primary" onclick="console.log('开始测试按钮2被点击'); startTest()">开始测试</button>
+            </div>
+        </div>
+
+        <div id="quiz" class="section hidden">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress"></div>
+            </div>
+            <div class="question-counter">
+                <span id="currentQuestion">1</span> / <span id="totalQuestions">50</span>
+            </div>
+            
+            <div id="questionContainer">
+                <!-- 题目将在这里动态加载 -->
+            </div>
+
+            <div class="navigation">
+                <button class="btn secondary" id="prevBtn" onclick="prevQuestion()" disabled>上一题</button>
+                <button class="btn primary" id="nextBtn" onclick="nextQuestion()">下一题</button>
+            </div>
+        </div>
+
+        <div id="loading" class="section hidden">
+            <div class="loading-spinner"></div>
+            <p class="loading-text">正在分析您的职业倾向...</p>
+        </div>
+
+        <div id="result" class="section hidden">
+            <div class="result-card">
+                <div class="result-header">
+                    <h2>📊 测试结果</h2>
+                    <p id="resultIntro" class="result-intro"></p>
+                </div>
+                
+                <div id="resultContent">
+                    <!-- 结果将在这里显示 -->
+                </div>
+
+                <div class="result-actions">
+                    <button class="btn primary" onclick="retakeTest()">重新测试</button>
+                    <button class="btn secondary" onclick="shareResult()">分享结果</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js?v=3.4"></script>
+</body>
+</html>
