@@ -482,11 +482,11 @@ const questions = [
                 scores: { entrepreneur: 7, private: 9, foreign: 1, soe: 0, civil: 0 } 
             },
             { 
-                text: "欧美文化，WLB优先，流程规范", 
+                text: "WLB优先，流程规范", 
                 scores: { entrepreneur: 2, private: 1, foreign: 9, soe: 2, civil: 1 } 
             },
             { 
-                text: "国企文化，稳定有序，按部就班", 
+                text: "稳定有序，按部就班，旱涝保收", 
                 scores: { entrepreneur: 0, private: 0, foreign: 2, soe: 9, civil: 8 } 
             }
         ]
@@ -526,7 +526,7 @@ const questions = [
                 scores: { entrepreneur: 0, private: 1, foreign: 3, soe: 7, civil: 9 } 
             },
             { 
-                text: "选调生通道，优秀干部培养", 
+                text: "类似选调生，优秀干部培养", 
                 scores: { entrepreneur: 0, private: 0, foreign: 2, soe: 6, civil: 8 } 
             }
         ]
@@ -546,7 +546,7 @@ const questions = [
                 scores: { entrepreneur: 0, private: 0, foreign: 2, soe: 3, civil: 9 } 
             },
             { 
-                text: "都不选，回地方发展", 
+                text: "都不选，去其他城市发展", 
                 scores: { entrepreneur: 2, private: 2, foreign: 3, soe: 7, civil: 7 } 
             }
         ]
@@ -646,7 +646,7 @@ const questions = [
                 scores: { entrepreneur: 1, private: 3, foreign: 9, soe: 7, civil: 5 } 
             },
             { 
-                text: "党校/干部培训，政治理论学习", 
+                text: "集中培训，理论学习", 
                 scores: { entrepreneur: 0, private: 0, foreign: 1, soe: 7, civil: 9 } 
             }
         ]
